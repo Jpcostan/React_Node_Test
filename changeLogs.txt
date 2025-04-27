@@ -1,0 +1,24 @@
+* Created .env files in both /Server and /Client
+
+* Added to /Server/.env:
+DB_URL=mongodb://127.0.0.1:27017
+DB=Prolink
+NODE_ENV=development
+
+* Added to /Client/.env:
+REACT_APP_BASE_URL=http://localhost:5001/api
+
+* Changed removed unneeded /api in /Client/.env
+is now: REACT_APP_BASE_URL=http://localhost:5001
+
+* Changed result inside of postApi within api.js to:
+let result = await axios.post(constant.baseUrl + (path.startsWith('/') ? path : '/' + path), data, {
+    headers: {
+        Authorization: localStorage.getItem("token") || sessionStorage.getItem("token")
+    }
+})
+
+* URL is now correct -> http://localhost:5001/api/user/login
+
+- login issue is now fixed
+
